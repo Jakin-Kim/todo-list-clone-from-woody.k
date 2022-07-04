@@ -1,0 +1,200 @@
+/* todo 작성 시, 모르는 css 스타일이나 헷갈리는 부분은 반드시 숙지하고 적어놓기 */
+
+html {
+    /* 너비(width)나, 높이(height)를 비율(%)로 주게 되면 
+    그 엘리먼트를 포함하고 있는 부모 엘리먼트에 대해 상대적으로 길이가 정해진다. */
+    height: 100%;
+}
+
+body {
+    /* 부모 요소에 flex를 지정하면 자식 요소에 적용할 수 있다. */
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    background-color: #F5F5F5;
+    /* 최소 높이 값을 100%로 해서 콘텐츠 양이 작아도 화면에 꽉 찰 수 있도록 만든다. */
+    min-height: 100%;
+}
+
+.todo-wrapper {
+    justify-content: center;
+    margin-top: 3rem;
+    /* 콘텐츠가 최소 너비보다 작다면, 최소 너비 600px이 적용되도록 한다. */
+    min-width: 600px;
+}
+
+/* todo 제목 */
+.todo-title {
+    padding: 2rem;
+    text-align: center;
+    color: rosybrown;
+    /* em과 rem은 상대단위이다.
+    - 공통점: font-size를 기준으로 크기가 정해진다.
+    (예 - font-size: 10px; -> 0.5em = 10 px x 0.5 = 5px)
+    - 차이점: 어떤 font-size를 기준으로 하는지에 따라 달라진다.
+    즉, em은 해당 단위가 사용되고 있는 요소의 font-size이고,
+    rem은 최상위 요소인 html의 font-size이다.*/
+    font-size: 5rem;
+}
+
+.todo-box {
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+/* todo 입력란 */
+.todo-input-box {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 3rem;
+    border-bottom: 1px solid #ddd;
+    justify-content: flex-start;    
+    align-items: center;
+}
+
+/* todo에 있는 모든 종류의 버튼들 */
+button {
+    background-color: transparent;
+    border: 0;
+}
+
+/* todo 입력란에 있는 체크버튼 기본 상태(체크가 안된 상태) */
+.complete-all-btn {
+    color: gray;
+    min-width: none;
+    min-height: none;
+    width: 1.5rem;
+    height: 1.5rem;
+/* 상하의 margin이 같고, 좌우의 margin이 같을 때 */
+    margin: 0.5rem 0.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* todo 입력란에 있는 체크버튼에 체크가 된 상태 */
+.complete-all-btn.checked {
+    color: green;
+}
+
+.todo-input {
+    width: 80%;
+    text-align: center;
+    border: 0;
+    outline: none;
+    font-size: 1.3rem;
+}
+/* todo <li>태그에 들어가는 기본 요소 상태 */
+.todo-item {
+    /* postion 속성을 통해 문서 상에 요소를 배치하는 방법을 지정한다.
+    1) 기준을 잡는다. (예- position: relative;)
+    2) 이동시킨다. (예- top: 50px;) */
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+    border-bottom: 1px solid #ddd;
+}
+
+/* todo 체크박스와 삭제버튼 위에 마우스를 올려놓을 때 */
+.todo-item:hover .delBtn {
+    opacity: 1;
+}
+
+/* todo 평소 체크박스 상태 */
+.checkbox {
+    min-width: none;
+    min-height: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0.5rem 0.5rem;
+    border-radius: 50px;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* todo 체크박스에 체크가 됐을 때, 체크박스 상태 */
+.todo-item.checked .checkbox {
+    border: 2px solid darkgray;
+    color: green;
+}
+
+/* todo 추가한 내용 */
+.todo {
+    font-size: 1.3rem;
+    padding: 0 1rem;
+    width: 80%;
+}
+
+/* todo 체크박스에 체크가 됐을 때, 리스트에 추가된 todo 상태 */
+.todo-item.checked .todo {
+    font-style: italic;
+    text-decoration: line-through;
+    color: lightgray;
+}
+
+/* todo 삭제버튼 */
+.delBtn {
+    opacity: 1;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    font-weight: lighter;
+    cursor: pointer;
+}
+
+.todo-bottom {
+    height: 3rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.button-group {
+    flex-flow: row nowrap;
+}
+
+/* todo에 있는 모든 버튼들과 하단에 group으로 묶인 버튼들 */
+.button-group button {
+    border: 1px solid #eee;
+    padding: 0.2rem 0.5rem;
+    margin: 0 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* todo 하단에 group으로 묶인 버튼들과 선택된 모든 버튼들 */
+.button-group button.selected {
+    border: 2px solid rosybrown;
+    padding: 0.2rem 0.5rem;
+    margin: 0 0.5rem;
+    border-radius: 8px;
+}
+
+/* todo 리스트에 입력된 모든 내용을 삭제하는 버튼 위에 마우스가 놓일 때 */
+.clear-completed-btn:hover {
+    font-style: italic;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* todo에 이미 입력되어 있는 값을 수정할 때 */
+.edit-input {
+    /* 이미 입력된 값으로 인해 지정되어 있는 내용부터 시작 */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 590px;
+    height: 2.8rem;
+}
+
+p.info {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #ccc;
+}

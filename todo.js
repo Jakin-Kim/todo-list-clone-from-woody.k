@@ -45,7 +45,7 @@ const getAllTodos = () => {
 };
 
 
-// 2-2. 할 일을 추가하는 함수 appendTodo() 생성
+// 2-2. 할 일을 추가하는 함수 appendTodo() 생성하여 '동작'하게 한다.
 const appendTodo = () => {
     // 새롭게 저장되는 할 일의 id값으로써 중복되지 않도록 하기 위해 증가시킨 후 새로 선언 및 할당
     const newId = id++;
@@ -53,5 +53,20 @@ const appendTodo = () => {
     const newTodos = [...getAllTodos(), {id: newId, isCompleted: false, content: text}];
     // setTodos()함수를 통해 새로운 배열을 getAllTodos() 함수에서 복사한 배열에 덮어씌운다.
     setTodos(newTodos);
-    // paintTodos();
+    // 3. 할 일이 추가될 때마다 paitTodos()함수를 실행하여 추가한다. -> HTML 파일 확인하기
+    paintTodos();
+}
+
+// 3. 할 일이 추가될 때마다, paintTodos()함수를 실행하여 화면에 렌더링하기
+// 3-1. 'todo-list' 클래스 네임을 가진 ul요소를 전역으로 사용하기 위해 DOM을 통해 불러오기
+const todoListElem = document.querySelector('.todo-list');
+// 3-2. 할 일을 화면에 렌더링하기 위해 실행시킬 함수 만들기
+const paintTodos = () => {
+    // 위에서 가져온 todoListElem 요소 안의 HTML 초기화 -> 왜?
+    // 만약 초기화하지 않는다면, paintTodos()함수 실행할 때마다, 기존의 HTML이 중복되면서 표현된다.
+    todoListElem.innerHTML = null; 
+    // 초기화된 todo-list에다가 (위에서 사용자의 동작에 따라 만들어진) todo 배열 가져오기
+    const allTodos = getAllTodos(); 
+
+    // "todo-item"에 해당하는 HTML을 그려서 
 }

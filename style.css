@@ -73,7 +73,7 @@ button {
 }
 
 /* todo 입력란에 있는 체크버튼에 체크가 된 상태 */
-.complete-all-btn.checked {
+.complete-all-btn .checked {
     color: green;
 }
 

@@ -1,72 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
-<body>
-    <!-- todo list의 전체 윤곽 -->
-    <div class="todo-wrapper">
-        <!-- todo list의 이름 -->
-        <div class="todo-title">todos</div>
-        <!-- todo list의 리스트 및 버튼 등 여러가지 기능이 담길 윤곽 -->
-        <div class="todo-box">
-            <!-- todo 입력란과 todo list 전체 체크 버튼 -->
-            <div class="todo-input-box">
-                <!-- todo list 전체 체크 버튼 -->
-                <button class="complete-all-btn">✔</button>
-                <!-- todo 입력란 -->
-                <input type="text" class="todo-input" placeholder="해야 할 일을 입력해주세요.">
-            </div>
-            <!-- todo 입력란을 통해서 추가된 todo list -->
-            <ul class="todo-list">
-                <!-- todo 1 -->
-                <!-- 완료된 일 -->
-                <li class="todo-item checked">
-                    <div class="checkbox">✔</div><!-- todo 수행 여부 체크버튼 -->
-                    <div class="todo">첫번째 할 일</div> <!-- todo -->
-                    <button class="delBtn">X</button> <!-- todo 삭제 버튼 -->
-                </li>
-                <!-- todo 2 -->
-                <!-- 완료되지 않은 일 -->
-                <li class="todo-item">
-                    <div class="checkbox">✔</div>
-                    <div class="todo">두번째 할 일</div>
-                    <button class="delBtn">X</button>
-                </li>
-                <!-- todo 3 -->
-                <li class="todo-item checked">
-                    <div class="checkbox">✔</div>
-                    <div class="todo">세번째 할 일</div>
-                    <button class="delBtn">X</button>
-                </li>
-            </ul>
-
-            <!-- todo list 하단의 리스트 정보 및 정보 관련 버튼 -->
-            <div class="todo-bottom">
-                <!-- 현재 완료되지 않고 남아있는 todo 갯수를 보여준다 -->
-                <div class="left-items">0 items left</div>
-                
-                <!-- 전체 클릭버튼 묶음-->
-                <div class="button-group">
-                    <!-- 전체 상태(완료/완료 안 된) 리스트를 보여주는 버튼 -->
-                    <button class="show-all-btn selected">All</button>
-                    <!-- 아직 완료 안 된(수행해야 할) 리스트를 보여주는 버튼 -->
-                    <!-- 새로 알게 된 내용: 속성으로 'data-'는 '사용자 데이터 속성'으로 사용된다. 
-                        -> 왜? 별다른 의미없는 단순한 데이터 속성이기 때문에 
-                           무분별하게 클래스를 남발하지 않아도 되서 JS 핸들링할 때 유용하다. -->
-                    <button class="show-active-btn" data-type="active">Active</button>
-                    <!-- 이미 완료된(수행된) 리스트를 보여주는 버튼 -->
-                    <button class="show-completed-btn" data-type="completed">Completed</button>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- todo list의 전체 윤곽 -->
+        <div class="todo-wrapper">
+            <!-- todo list의 이름 -->
+            <div class="todo-title">todos</div>
+            <!-- todo list의 리스트 및 버튼 등 여러가지 기능이 담길 윤곽 -->
+            <div class="todo-box">
+                <!-- todo 입력란과 todo list 전체 체크 버튼 -->
+                <div class="todo-input-box">
+                    <!-- todo list 전체 체크 버튼 -->
+                    <button class="complete-all-btn">✔</button>
+                    <!-- todo 입력란 -->
+                    <input type="text" class="todo-input" placeholder="해야 할 일을 입력해주세요.">
                 </div>
-                <button class="clear-completed-btn">Clear Completed</button>
+                <!-- todo 입력란을 통해서 추가된 todo list -->
+            
+
+                <!-- todo list 하단의 리스트 정보 및 정보 관련 버튼 -->
+                <div class="todo-bottom">
+                    <!-- 현재 완료되지 않고 남아있는 todo 갯수를 보여준다 -->
+                    <div class="left-items">0 items left</div>
+                    
+                    <!-- 전체 클릭버튼 묶음-->
+                    <div class="button-group">
+                        <!-- 전체 상태(완료/완료 안 된) 리스트를 보여주는 버튼 -->
+                        <button class="show-all-btn selected">All</button>
+                        <!-- 아직 완료 안 된(수행해야 할) 리스트를 보여주는 버튼 -->
+                        <!-- 새로 알게 된 내용: 속성으로 'data-'는 '사용자 데이터 속성'으로 사용된다. 
+                            -> 왜? 별다른 의미없는 단순한 데이터 속성이기 때문에 
+                            무분별하게 클래스를 남발하지 않아도 되서 JS 핸들링할 때 유용하다. -->
+                        <button class="show-active-btn" data-type="active">Active</button>
+                        <!-- 이미 완료된(수행된) 리스트를 보여주는 버튼 -->
+                        <button class="show-completed-btn" data-type="completed">Completed</button>
+                    </div>
+                    <button class="clear-completed-btn">Clear Completed</button>
+                </div>
             </div>
+            <p class="info">더블클릭 시 수정 가능!</p>
         </div>
-        <p class="info">더블클릭 시 수정 가능!</p>
-    </div>
-    <script src="todo.js"></script>
-</body>
+        <script src="todo.js"></script>
+    </body>
 </html>
